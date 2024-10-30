@@ -133,6 +133,7 @@ Route::get('admin/yonetici-duzenle', [YoneticiController::class, 'update'])->nam
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('belge', BelgeController::class);
+    Route::resource('kategori', KategoriController::class);
 });
 
 

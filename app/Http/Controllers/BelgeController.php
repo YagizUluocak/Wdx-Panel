@@ -79,6 +79,7 @@ class BelgeController extends Controller
 
         return redirect()->route('admin.belge.index')->with('success', 'Belge başarıyla güncellendi.');
     }
+    
     public function destroy($id)
     {
         $belge = Belge::findOrFail($id);

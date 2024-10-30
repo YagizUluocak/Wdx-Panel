@@ -427,11 +427,11 @@ return [
                     'submenu' => [
                         [
                             'text' => 'Kategori Listele',
-                            'url' => 'admin/urun/kategori-liste',
+                            'url' => 'admin/kategori',
                         ],
                         [
                             'text' => 'Kategori Ekle',
-                            'url' => 'admin/urun/kategori-ekle',
+                            'url' => 'admin/kategori/create',
                         ],
                     ]
                 ]
