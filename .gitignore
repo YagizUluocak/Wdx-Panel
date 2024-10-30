@@ -1,0 +1,19 @@
+# Laravel specific files
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+
+# IDE files
+.idea
+*.sublime-workspace
+*.sublime-project
+.vscode
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment file
+.env
