@@ -135,6 +135,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('belge', BelgeController::class);
     Route::resource('kategori', KategoriController::class);
 });
-
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('urun', UrunController::class);
+});
+Route::delete('/urun/resim-sil/{id}', [UrunController::class, 'deleteImage'])->name('urun.resim-sil');
 
 

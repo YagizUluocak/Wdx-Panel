@@ -11,7 +11,27 @@
 
     <div class="container-fluid">
         <x-adminlte-card>
-            <form method="POST">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div id="success-alert" class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+
+            <form id="urunForm" method="POST" action="{{ route('admin.urun.store') }}" enctype="multipart/form-data">
+                @csrf
+
                 <div class="row">
                     <div class="col-12">
                         <x-adminlte-input name="name" label="Ürün adı" placeholder="Ürün adı Giriniz." />
@@ -26,23 +46,33 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <x-adminlte-input name="fiyat" label="fiyat" placeholder="Ürün Fiyatı Giriniz." />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <x-adminlte-select name="stok" label="Stok Durumu" data-placeholder="Stok Durumu Seçiniz">
-                            <option>Stok Var</option>
-                            <option>Tükendi</option>
+                        <x-adminlte-select name="kategori_id" label="Kategori Seçiniz" data-placeholder="Kategori Seçiniz...">
+                            @foreach($kategoriler as $kategori)
+                                <option value="{{ $kategori->id}}">{{ $kategori->name }}</option>
+                            @endforeach
                         </x-adminlte-select>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="urunresimkapak">Ürün Kapak Görseli</label>
-                        <x-adminlte-input-file name="urunresimkapak"  placeholder="Ürün Kapak Resmi Seçiniz.">
+                        <x-adminlte-input type="number" name="fiyat" label="fiyat" placeholder="Ürün Fiyatı Giriniz." step="0.01" min="0"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <x-adminlte-select name="stok" label="Stok Durumu" data-placeholder="Select an option...">
+                            <option value="1">Stok Var</option>
+                            <option value="0">Tükendi</option>
+                        </x-adminlte-select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="resim">Ürün Kapak Görseli</label>
+                        <x-adminlte-input-file name="resim"  placeholder="Ürün Kapak Resmi Seçiniz.">
                             <x-slot name="prependedSlot">
                                 <div class="input-group-text bg-lightblue">
                                     <i class="fas fa-upload"></i>
@@ -55,29 +85,23 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="durum">Durum</label>
-                        <x-adminlte-input-switch  name="durum" data-on-color="success" data-off-color="danger"/>
+                        <label for="durumSwitch">Durum</label>
+                        <x-adminlte-input-switch id="durumSwitch" name="durumSwitch" data-on-color="success" data-off-color="danger" data-on-text="Göster" data-off-text="Gizle" />         
+                    <input type="hidden" name="durum" id="durum">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="anasayfada">Anasayfada Görünsün mü?</label>
-                        <x-adminlte-input-switch name="anasayfada" data-on-color="success" data-off-color="danger"/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <x-adminlte-textarea name="urun_aciklamasi" label="Spot Metni" rows=5 placeholder="Spot Metni giriniz..." style="resize: none;">
+                        <x-adminlte-textarea name="spot_metni" label="Spot Metni" rows=5 placeholder="Spot Metni giriniz..." style="resize: none;">
                         </x-adminlte-textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="sumernote">Ürün Açıklaması</label>
-                        <textarea name="summernote" id="summernote" cols="30" rows="10"></textarea>
+                        <label for="icerik">Ürün Açıklaması</label>
+                        <textarea name="icerik" id="icerik" cols="30" rows="10"></textarea>
                     </div>
                 </div>
 
@@ -95,7 +119,7 @@
                         <x-adminlte-card title="Seo Ayarları" theme="secondary" icon="fas fa-info-circle">
                             <div class="col-12">
                                 <label for="description">Description</label>
-                                <x-adminlte-textarea name="descriptin" id="description" rows="4" style="width: 100%" style="resize: none;" placeholder="Description Metni Giriniz."></x-adminlte-textarea>
+                                <x-adminlte-textarea name="description" id="description" rows="4" style="width: 100%" style="resize: none;" placeholder="Description Metni Giriniz."></x-adminlte-textarea>
                             </div>
                             <div class="col-12 mt-4">
                                 <x-adminlte-input name="keywords" label="Keywords" placeholder="Keywords Giriniz." />
@@ -106,7 +130,7 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <x-adminlte-button class="mt-4" label="Kaydet" theme="success" icon="fas fa-spinner fa-spin"/>
+                        <x-adminlte-button type="submit" class="mt-4" label="Kaydet" theme="success" icon="fas fa-spinner fa-spin"/>
                     </div>
                 </div>
 
@@ -143,10 +167,10 @@
         
     });
 </script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
 <script>
-    $('#summernote').summernote({
+    $('#icerik').summernote({
       placeholder: 'Ürün Açıklaması Giriniz',
       tabsize: 2,
       height: 120,
@@ -163,6 +187,26 @@
       fontNamesIgnoreCheck: ['Montserrat', 'Roboto']
     });
 </script>
+<script>
+        document.getElementById('urunForm').addEventListener('submit', function(e) {
+        // Switch input kontrolü
+        let switchInput = document.getElementById('durumSwitch');
+        let durumInput = document.getElementById('durum');
+        
+        // Switch açık (on) ise durum değerini 1 yap, değilse 0 yap
+        durumInput.value = switchInput.checked ? 1 : 0;
+    });
 
+        // Eğer başarı mesajı varsa, yönlendirme işlemini yap
+        window.onload = function() {
+        if (document.getElementById('success-alert')) {
+            setTimeout(function() {
+                // 1 saniye sonra yönlendir
+                window.location.href = "{{ route('admin.urun.index') }}";
+            }, 1500);
+        }
+    };
+
+</script>
 
 @stop

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('plugins.BootstrapSwitch', true)
-
+@section('plugins.Datatables', true)
 @section('title', 'Ürün Listesi')
 
 @section('content_header')
@@ -10,10 +10,8 @@
 @php
 $heads = [
     'ID',
-    ['label' => 'Ürün Resim', 'width' => 20],
-    ['label' => 'Ürün Adı', 'width' => 20],
-    ['label' => 'Kategori'],
-    ['label' => 'Anasayfa'],
+    ['label' => 'Ürün Resim'],
+    ['label' => 'Ürün Adı'],
     ['label' => 'Durum'],
     ['label' => 'İşlemler'],
 ];
@@ -34,30 +32,30 @@ $durum = '<x-adminlte-input-switch  name="durum" data-on-color="success" data-of
 @section('content')
     <div class="container-fluid">
         <x-adminlte-card>
-            <button class="btn btn-primary mb-2">Yeni Ürün Ekle</button>
+            <a href="{{ route('admin.urun.create') }}" class="btn btn-primary mb-2" >Yeni Ürün Ekle</a>
             <div class="row">
                 <div class="col-12">
                     <x-adminlte-datatable class="text-center" :heads="$heads" id="tableurunliste" striped hoverable bordered compressed centered>
-                        <tr>
-                            <td>1</td>
-                            <td>Resim.jpg</td>
-                            <td>Ürün 1</td>
-                            <td>Kategori</td>
-                            <td>
-                                <span style="display: inline-block;">
-                                    <x-adminlte-input-switch name="anasayfa" data-on-color="success" data-off-color="danger" igroup-size="sm"/>
-                                </span>
-                            </td>
-                            <td>
-                                <span style="display: inline-block;">
-                                    <x-adminlte-input-switch name="durum" data-on-color="success" data-off-color="danger" igroup-size="sm"/>
-                                </span>
-                            </td>
-                            <td>
-                                @php echo $btnEdit @endphp
-                                @php echo $btnDelete @endphp
-                            </td>
-                        </tr>
+                        @foreach($urunler as $urun)
+                            <tr>
+                                <td>{{$urun->id}}</td>
+                                <td>
+                                    <img name="resim" src="{{ asset('storage/urun/kapak/' . $urun->resim)}}" class="img-fluid" style="width: 150px;height:100px;" alt="">
+                                </td>
+                                <td>{{$urun->name}}</td>
+                                <td style="color:{{ $urun->durum ? 'rgb(49, 160, 49)' : 'rgb(160, 49, 49)' }}"> {{ $urun->durum ? 'Aktif' : 'Pasif' }}</td>
+                                <td>
+                                    <a href="{{ route('admin.urun.edit', $urun->id) }}" class="btn btn-warning mx-1 shadow btn-sm">Düzenle</a>
+                                    <button class="btn btn-danger mx-1 shadow btn-sm" title="Delete" onclick="event.preventDefault(); if(confirm('Bu Ürünü silmek istediğinizden emin misiniz?')) { document.getElementById('delete-form-{{ $urun->id }}').submit(); }">
+                                        <i class="fa fa-lg fa-fw fa-trash"></i>
+                                    </button>
+                                    <form id="delete-form-{{ $urun->id }}" action="{{ route('admin.urun.destroy', $urun->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </x-adminlte-datatable>
                 </div>
             </div>

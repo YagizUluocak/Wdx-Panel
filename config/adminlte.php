@@ -415,11 +415,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Ürün Ekle',
-                    'url' => 'admin/urun-ekle',
+                    'url' => 'admin/urun/create',
                 ],
                 [
                     'text' => 'Ürün Listesi',
-                    'url' => 'admin/urun-liste',
+                    'url' => 'admin/urun',
                 ],
                 [
                     'text' => 'Ürün Kategorileri',
