@@ -134,10 +134,16 @@ Route::get('admin/yonetici-duzenle', [YoneticiController::class, 'update'])->nam
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('belge', BelgeController::class);
     Route::resource('kategori', KategoriController::class);
+
+
 });
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('urun', UrunController::class);
 });
-Route::delete('/urun/resim-sil/{id}', [UrunController::class, 'deleteImage'])->name('urun.resim-sil');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('proje', ProjeController::class);
+});
 
+Route::delete('/urun/resim-sil/{id}', [UrunController::class, 'deleteImage'])->name('urun.resim-sil');
+Route::delete('/proje/resim-sil/{id}', [ProjeController::class, 'deleteImage'])->name('proje.resim-sil');
 

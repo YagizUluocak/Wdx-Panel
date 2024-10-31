@@ -11,7 +11,26 @@
 
     <div class="container-fluid">
         <x-adminlte-card>
-            <form method="POST">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div id="success-alert" class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+
+            <form method="POST" id="projeForm" action="{{ route('admin.proje.store')}}" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-12">
                         <x-adminlte-input name="name" label="Proje adı" placeholder="Proje adı Giriniz." />
@@ -20,8 +39,8 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="projeresimkapak">Ürün Kapak Görseli</label>
-                        <x-adminlte-input-file name="projeresimkapak"  placeholder="Proje Kapak Resmi Seçiniz.">
+                        <label for="resim">Ürün Kapak Görseli</label>
+                        <x-adminlte-input-file name="resim"  placeholder="Proje Kapak Resmi Seçiniz.">
                             <x-slot name="prependedSlot">
                                 <div class="input-group-text bg-lightblue">
                                     <i class="fas fa-upload"></i>
@@ -34,29 +53,24 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="durum">Durum</label>
-                        <x-adminlte-input-switch  name="durum" data-on-color="success" data-off-color="danger"/>
+                        <label for="durumSwitch">Durum</label>
+                        <x-adminlte-input-switch id="durumSwitch" name="durumSwitch" data-on-color="success" data-off-color="danger" data-on-text="Göster" data-off-text="Gizle" />         
+                    <input type="hidden" name="durum" id="durum">
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <label for="anasayfada">Anasayfada Görünsün mü?</label>
-                        <x-adminlte-input-switch name="anasayfada" data-on-color="success" data-off-color="danger"/>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <x-adminlte-textarea name="proje_aciklamasi" label="Spot Metni" rows=5 placeholder="Spot Metni giriniz..." style="resize: none;">
+                        <x-adminlte-textarea name="spot_metni" label="Spot Metni" rows=5 placeholder="Spot Metni giriniz..." style="resize: none;">
                         </x-adminlte-textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="sumernote">Proje Açıklaması</label>
-                        <textarea name="summernote" id="summernote" cols="30" rows="10"></textarea>
+                        <label for="icerik">Proje Açıklaması</label>
+                        <textarea name="icerik" id="summernote" cols="30" rows="10"></textarea>
                     </div>
                 </div>
 
@@ -74,7 +88,7 @@
                         <x-adminlte-card title="Seo Ayarları" theme="secondary" icon="fas fa-info-circle">
                             <div class="col-12">
                                 <label for="description">Description</label>
-                                <x-adminlte-textarea name="descriptin" id="description" rows="4" style="width: 100%" style="resize: none;" placeholder="Description Metni Giriniz."></x-adminlte-textarea>
+                                <x-adminlte-textarea name="description" id="description" rows="4" style="width: 100%" style="resize: none;" placeholder="Description Metni Giriniz."></x-adminlte-textarea>
                             </div>
                             <div class="col-12 mt-4">
                                 <x-adminlte-input name="keywords" label="Keywords" placeholder="Keywords Giriniz." />
@@ -85,7 +99,7 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <x-adminlte-button class="mt-4" label="Kaydet" theme="success" icon="fas fa-spinner fa-spin"/>
+                        <x-adminlte-button  type="submit" class="mt-4" label="Kaydet" theme="success" icon="fas fa-spinner fa-spin"/>
                     </div>
                 </div>
 
@@ -122,11 +136,12 @@
         
     });
 </script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+
 <script>
     $('#summernote').summernote({
-      placeholder: 'Ürün Açıklaması Giriniz',
+      placeholder: 'Proje Açıklaması Giriniz',
       tabsize: 2,
       height: 120,
       toolbar: [
@@ -143,5 +158,26 @@
     });
 </script>
 
+<script>
+    document.getElementById('projeForm').addEventListener('submit', function(e) {
+    // Switch input kontrolü
+    let switchInput = document.getElementById('durumSwitch');
+    let durumInput = document.getElementById('durum');
+    
+    // Switch açık (on) ise durum değerini 1 yap, değilse 0 yap
+    durumInput.value = switchInput.checked ? 1 : 0;
+});
+
+    // Eğer başarı mesajı varsa, yönlendirme işlemini yap
+    window.onload = function() {
+    if (document.getElementById('success-alert')) {
+        setTimeout(function() {
+            // 1 saniye sonra yönlendir
+            window.location.href = "{{ route('admin.proje.index') }}";
+        }, 1500);
+    }
+};
+
+</script>
 
 @stop

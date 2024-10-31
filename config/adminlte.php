@@ -447,11 +447,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Proje Listesi',
-                    'url' => 'admin/proje-liste',
+                    'url' => 'admin/proje',
                 ],
                 [
                     'text' => 'Proje Ekle',
-                    'url' => 'admin/proje-ekle',
+                    'url' => 'admin/proje/create',
                 ],
             ],
         ],

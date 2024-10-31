@@ -79,7 +79,7 @@ class UrunController extends Controller
             // Çoklu resimleri kaydetme
             if ($request->hasFile('urunresim')) {
                 foreach ($request->file('urunresim') as $resim) {
-                    $resimAdi = uniqid() . '.' . $resim->extension();;
+                    $resimAdi = uniqid() . '.' . $resim->extension();
                     $resim->storeAs('public/urun/resimler', $resimAdi);
                     
                     Urun_Resimleri::create([

@@ -266,7 +266,6 @@
         $("input[name='durumSwitch']").bootstrapSwitch();
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
 <script>
     $('#icerik').summernote({
       placeholder: 'Ürün Açıklaması Giriniz',
