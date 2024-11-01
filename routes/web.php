@@ -55,19 +55,19 @@ Route::get('admin/dil-ekle', [App\Http\Controllers\yeniDilEkleController::class,
 Route::get('admin/dil-liste', [App\Http\Controllers\dilListeController::class, 'index'])->name('dil-liste');
 Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::class, 'index'])->name('dil-duzenle');
 
-Route::get('admin/urun/kategori-liste', [KategoriController::class, 'index'])->name('kategori-listele');
-Route::get('admin/urun/kategori-ekle', [KategoriController::class, 'create'])->name('kategori-ekle');
-Route::get('admin/kategori-duzenle', [KategoriController::class,'update'])->name('kategori-duzenle');
-Route::get('admin/urun-ekle', [UrunController::class, 'create'])->name('urun-ekle');
-Route::get('admin/urun-liste', [UrunController::class, 'index'])->name('urun-liste');
+// Route::get('admin/urun/kategori-liste', [KategoriController::class, 'index'])->name('kategori-listele');
+// Route::get('admin/urun/kategori-ekle', [KategoriController::class, 'create'])->name('kategori-ekle');
+// Route::get('admin/kategori-duzenle', [KategoriController::class,'update'])->name('kategori-duzenle');
+// Route::get('admin/urun-ekle', [UrunController::class, 'create'])->name('urun-ekle');
+// Route::get('admin/urun-liste', [UrunController::class, 'index'])->name('urun-liste');
 
-Route::get('admin/proje-ekle', [ProjeController::class, 'create'])->name('proje-ekle');
-Route::get('admin/proje-liste', [ProjeController::class, 'index'])->name('proje-liste');
-Route::get('admin/proje-duzenle', [ProjeController::class, 'update'])->name('proje-duzenle');
+// Route::get('admin/proje-ekle', [ProjeController::class, 'create'])->name('proje-ekle');
+// Route::get('admin/proje-liste', [ProjeController::class, 'index'])->name('proje-liste');
+// Route::get('admin/proje-duzenle', [ProjeController::class, 'update'])->name('proje-duzenle');
 
-Route::get('admin/paket-liste', [PaketController::class, 'index'])->name('paket-liste');
-Route::get('admin/paket-ekle', [PaketController::class, 'create'])->name('paket-ekle');
-Route::get('admin/paket-duzenle', [PaketController::class, 'update'])->name('paket-duzenle');
+// Route::get('admin/paket-liste', [PaketController::class, 'index'])->name('paket-liste');
+// Route::get('admin/paket-ekle', [PaketController::class, 'create'])->name('paket-ekle');
+// Route::get('admin/paket-duzenle', [PaketController::class, 'update'])->name('paket-duzenle');
 
 Route::get('admin/sayfa-liste', [SayfaController::class, 'index'])->name('sayfa-liste');
 Route::get('admin/sayfa-ekle', [SayfaController::class, 'create'])->name('sayfa-ekle');
@@ -134,15 +134,11 @@ Route::get('admin/yonetici-duzenle', [YoneticiController::class, 'update'])->nam
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('belge', BelgeController::class);
     Route::resource('kategori', KategoriController::class);
-
-
-});
-Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('paket', PaketController::class);
     Route::resource('urun', UrunController::class);
-});
-Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('proje', ProjeController::class);
 });
+
 
 Route::delete('/urun/resim-sil/{id}', [UrunController::class, 'deleteImage'])->name('urun.resim-sil');
 Route::delete('/proje/resim-sil/{id}', [ProjeController::class, 'deleteImage'])->name('proje.resim-sil');

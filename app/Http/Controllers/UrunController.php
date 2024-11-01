@@ -90,7 +90,7 @@ class UrunController extends Controller
             }
 
             // Başarı mesajı ile yönlendirme
-            return redirect()->route('urun-ekle')->with('success', 'Ürün başarıyla eklendi.');
+            return redirect()->route('admin.urun.create')->with('success', 'Ürün başarıyla eklendi.');
         } catch (\Exception $e) {
             // Hata durumunda geri dön
             return redirect()->back()->withErrors(['error' => 'Bir hata oluştu: ' . $e->getMessage()]);

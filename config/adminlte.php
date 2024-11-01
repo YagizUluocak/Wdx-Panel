@@ -465,11 +465,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Paket Listesi',
-                    'url' => 'admin/paket-liste',
+                    'url' => 'admin/paket',
                 ],
                 [
                     'text' => 'Paket Ekle',
-                    'url' => 'admin/paket-ekle',
+                    'url' => 'admin/paket/create',
                 ],
             ],
         ],

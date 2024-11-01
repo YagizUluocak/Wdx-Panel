@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('plugins.BootstrapSwitch', true)
-
+@section('plugins.Datatables', true)
 @section('title', 'Proje Listesi')
 
 @section('content_header')

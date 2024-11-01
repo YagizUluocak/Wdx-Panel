@@ -76,7 +76,7 @@ class ProjeController extends Controller
                 }
             }
 
-            return redirect()->route('proje-ekle')->with('success', 'Proje Başarıyla Eklendi.');
+            return redirect()->route('admin.proje.create')->with('success', 'Proje Başarıyla Eklendi.');
         }catch(\Exception $e){
             return redirect()->back()->withErrors(['error' => 'Bir Hata Oluştu: ' . $e->getMessage()]);
         }
