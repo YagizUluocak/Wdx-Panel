@@ -16,14 +16,6 @@ $heads = [
     ['label' => 'İşlemler', 'width' => 15],
 ];
 
-$btnEdit = '<a href="' . url('/admin/sayfa-duzenle') . '" class="btn btn-warning mx-1 shadow btn-sm" title="Edit" >
-    <i class="fa fa-lg fa-fw fa-pen"></i>
-    </a>';
-
-$btnDelete = '<button class="btn btn-danger mx-1 shadow btn-sm" title="Delete">
-        <i class="fa fa-ls fa-fw fa-trash" igroup-size="sm"></i>
-    </button>';
-
 @endphp
 
 @section('content')

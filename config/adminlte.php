@@ -501,11 +501,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Hizmet Ekle',
-                    'url' => 'admin/hizmet-ekle',
+                    'url' => 'admin/hizmet/create',
                 ],
                 [
                     'text' => 'Hizmet Listesi',
-                    'url' => 'admin/hizmet-liste',
+                    'url' => 'admin/hizmet',
                 ],
             ],
         ],

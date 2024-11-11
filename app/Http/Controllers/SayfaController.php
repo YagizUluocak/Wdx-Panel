@@ -87,7 +87,7 @@ class SayfaController extends Controller
 
                 $fileName = time() . '.' . $request->resim->extension();
                 $request->resim->storeAs('public/sayfa',$fileName);
-                $validated['resim'] = $validated['resim'];
+                $validated['resim'] = $fileName;
             }else{
                 $validated['resim'] = $sayfa->resim;
             }
