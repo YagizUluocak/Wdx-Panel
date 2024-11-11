@@ -483,11 +483,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Sayfa Ekle',
-                    'url' => 'admin/sayfa-ekle',
+                    'url' => 'admin/sayfa/create',
                 ],
                 [
                     'text' => 'Sayfa Listesi',
-                    'url' => 'admin/sayfa-liste',
+                    'url' => 'admin/sayfa',
                 ],
             ],
         ],

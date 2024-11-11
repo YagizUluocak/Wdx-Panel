@@ -69,9 +69,9 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/paket-ekle', [PaketController::class, 'create'])->name('paket-ekle');
 // Route::get('admin/paket-duzenle', [PaketController::class, 'update'])->name('paket-duzenle');
 
-Route::get('admin/sayfa-liste', [SayfaController::class, 'index'])->name('sayfa-liste');
-Route::get('admin/sayfa-ekle', [SayfaController::class, 'create'])->name('sayfa-ekle');
-Route::get('admin/sayfa-duzenle', [SayfaController::class, 'update'])->name('sayfa-duzenle');
+// Route::get('admin/sayfa-liste', [SayfaController::class, 'index'])->name('sayfa-liste');
+// Route::get('admin/sayfa-ekle', [SayfaController::class, 'create'])->name('sayfa-ekle');
+// Route::get('admin/sayfa-duzenle', [SayfaController::class, 'update'])->name('sayfa-duzenle');
 
 Route::get('admin/hizmet-liste', [HizmetController::class, 'index'])->name('hizmet-liste');
 Route::get('admin/hizmet-ekle', [HizmetController::class, 'create'])->name('hizmet-ekle');
@@ -137,6 +137,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('paket', PaketController::class);
     Route::resource('urun', UrunController::class);
     Route::resource('proje', ProjeController::class);
+    Route::resource('sayfa', SayfaController::class);
 });
 
 
