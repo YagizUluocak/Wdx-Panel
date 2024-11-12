@@ -77,9 +77,9 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/hizmet-ekle', [HizmetController::class, 'create'])->name('hizmet-ekle');
 // Route::get('admin/hizmet-duzenle', [HizmetController::class, 'update'])->name('hizmet-duzenle');
 
-Route::get('admin/soru-liste', [SoruController::class, 'index'])->name('soru-liste');
-Route::get('admin/soru-ekle', [SoruController::class, 'create'])->name('soru-ekle');
-Route::get('admin/soru-duzenle', [SoruController::class, 'update'])->name('soru-duzenle');
+// Route::get('admin/soru-liste', [SoruController::class, 'index'])->name('soru-liste');
+// Route::get('admin/soru-ekle', [SoruController::class, 'create'])->name('soru-ekle');
+// Route::get('admin/soru-duzenle', [SoruController::class, 'update'])->name('soru-duzenle');
 
 Route::get('admin/referans-liste', [ReferansController::class, 'index'])->name('referans-liste');
 Route::get('admin/referans-ekle', [ReferansController::class, 'create'])->name('referans-ekle');
@@ -139,6 +139,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('proje', ProjeController::class);
     Route::resource('sayfa', SayfaController::class);
     Route::resource('hizmet', HizmetController::class);
+    Route::resource('soru',SoruController::class);
 });
 
 

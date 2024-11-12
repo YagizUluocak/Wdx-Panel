@@ -520,11 +520,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Soru Listesi',
-                    'url' => 'admin/soru-liste',
+                    'url' => 'admin/soru',
                 ],
                 [
                     'text' => 'Yeni Soru Ekle',
-                    'url' => 'admin/soru-ekle',
+                    'url' => 'admin/soru/create',
                 ],
             ],
         ],
