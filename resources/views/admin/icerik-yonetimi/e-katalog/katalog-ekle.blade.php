@@ -11,17 +11,48 @@
 
     <div class="container-fluid">
         <x-adminlte-card>
-            <form method="POST">
+
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(session('success'))
+                <div id="success-alert" class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+
+            <form id="katalogForm" action="{{ route('admin.katalog.store') }}" enctype="multipart/form-data" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-12">
-                        <x-adminlte-input name="title" label="Katalog Başlık" placeholder="Katalog Başlığı Giriniz." />
+                        <x-adminlte-input name="baslik" label="Katalog Başlık" placeholder="Katalog Başlığı Giriniz." />
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="katalogresimkapak">Listeleme Görseli</label>
-                        <x-adminlte-input-file name="katalogresimkapak"  placeholder="Kapak Seçiniz.">
+                        <label for="resim">Katalog Kapak Görseli</label>
+                        <x-adminlte-input-file name="resim"  placeholder="Katalog Kapak Resmi Seçiniz.">
+                            <x-slot name="prependedSlot">
+                                <div class="input-group-text bg-lightblue">
+                                    <i class="fas fa-upload"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input-file>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="resim">Katalog Kapak Görseli</label>
+                        <x-adminlte-input-file name="dosya"  placeholder="Katalog Kapak Resmi Seçiniz.">
                             <x-slot name="prependedSlot">
                                 <div class="input-group-text bg-lightblue">
                                     <i class="fas fa-upload"></i>
@@ -33,27 +64,21 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <label for="dosya">Dosya</label>
-                        <x-adminlte-input-file name="dosya" placeholder="Dosya Seçiniz.">
-                            <x-slot name="prependedSlot">
-                                <div class="input-group-text bg-lightblue">
-                                    <i class="fas fa-upload"></i>
-                                </div>
-                            </x-slot>
-                        </x-adminlte-input-file>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <label for="durum">Durum</label>
-                        <x-adminlte-input-switch  name="durum" data-on-color="success" data-off-color="danger"/>
+                        <label for="durumSwitch">Durum</label>
+                        <x-adminlte-input-switch 
+                            id="durumSwitch" 
+                            name="durumSwitch" 
+                            data-on-color="success" 
+                            data-off-color="danger" 
+                            data-on-text="Göster" 
+                            data-off-text="Gizle" />         
+                    <input type="hidden" name="durum" id="durum">
                     </div>
                 </div>
         
                 <div class="row">
                     <div class="col-12">
-                        <x-adminlte-button class="mt-4" label="Kaydet" theme="success" icon="fas fa-spinner fa-spin"/>
+                        <x-adminlte-button class="mt-4" type="submit" label="Kaydet" theme="success" icon="fas fa-spinner fa-spin"/>
                     </div>
                 </div>
 
@@ -70,14 +95,40 @@
 @section('css')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
-
 @stop
 
 @section('js')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.5/js/fileinput.min.js"></script>
 
+<!-- Switch -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap3/bootstrap-switch.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("input[name='durumSwitch']").bootstrapSwitch();
+    });
+</script>
+<script>
 
+        
+    document.getElementById('katalogForm').addEventListener('submit', function(e) {
+        // Switch input kontrolü
+        let switchInput = document.getElementById('durumSwitch');
+        let durumInput = document.getElementById('durum');
+        
+        // Switch açık (on) ise durum değerini 1 yap, değilse 0 yap
+        durumInput.value = switchInput.checked ? 1 : 0;
+    });
+
+        // Eğer başarı mesajı varsa, yönlendirme işlemini yap
+        window.onload = function() {
+        if (document.getElementById('success-alert')) {
+            setTimeout(function() {
+                // 1 saniye sonra yönlendir
+                window.location.href = "{{ route('admin.katalog.index') }}";
+            }, 1200);
+        }
+    };
+</script>
+<!-- Switch Son -->
 @stop

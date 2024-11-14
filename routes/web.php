@@ -81,15 +81,15 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/soru-ekle', [SoruController::class, 'create'])->name('soru-ekle');
 // Route::get('admin/soru-duzenle', [SoruController::class, 'update'])->name('soru-duzenle');
 
-Route::get('admin/referans-liste', [ReferansController::class, 'index'])->name('referans-liste');
-Route::get('admin/referans-ekle', [ReferansController::class, 'create'])->name('referans-ekle');
-Route::get('admin/referans-duzenle', [ReferansController::class, 'update'])->name('referans-duzenle');
+// Route::get('admin/referans-liste', [ReferansController::class, 'index'])->name('referans-liste');
+// Route::get('admin/referans-ekle', [ReferansController::class, 'create'])->name('referans-ekle');
+// Route::get('admin/referans-duzenle', [ReferansController::class, 'update'])->name('referans-duzenle');
 
 
 
-Route::get('admin/katalog-liste', [KatalogController::class, 'index'])->name('katalog-liste');
-Route::get('admin/katalog-ekle', [KatalogController::class, 'create'])->name('katalog-ekle');
-Route::get('admin/katalog-duzenle', [KatalogController::class, 'update'])->name('katalog-duzenle');
+// Route::get('admin/katalog-liste', [KatalogController::class, 'index'])->name('katalog-liste');
+// Route::get('admin/katalog-ekle', [KatalogController::class, 'create'])->name('katalog-ekle');
+// Route::get('admin/katalog-duzenle', [KatalogController::class, 'update'])->name('katalog-duzenle');
 
 Route::get('admin/ekip-liste', [EkipController::class, 'index'])->name('ekip-liste');
 Route::get('admin/ekip-ekle', [EkipController::class, 'create'])->name('ekip-ekle');
@@ -141,7 +141,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('hizmet', HizmetController::class);
     Route::resource('soru',SoruController::class);
     Route::resource('referans', ReferansController::class);
-
+    Route::resource('katalog',KatalogController::class);
 });
 
 

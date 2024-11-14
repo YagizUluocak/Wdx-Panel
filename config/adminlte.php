@@ -575,11 +575,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Katalog Ekle',
-                    'url' => 'admin/katalog-ekle',
+                    'url' => 'admin/katalog/create',
                 ],
                 [
                     'text' => 'Katalog Listesi',
-                    'url' => 'admin/katalog-liste',
+                    'url' => 'admin/katalog',
                 ],
             ],
         ],
