@@ -539,11 +539,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Referans Ekle',
-                    'url' => 'admin/referans-ekle',
+                    'url' => 'admin/referans/create',
                 ],
                 [
                     'text' => 'Referans Listesi',
-                    'url' => 'admin/referans-liste',
+                    'url' => 'admin/referans',
                 ],
             ],
         ],

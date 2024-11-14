@@ -140,6 +140,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('sayfa', SayfaController::class);
     Route::resource('hizmet', HizmetController::class);
     Route::resource('soru',SoruController::class);
+    Route::resource('referans', ReferansController::class);
+
 });
 
 
