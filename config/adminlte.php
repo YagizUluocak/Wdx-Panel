@@ -594,11 +594,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Ekip Üyesi Ekle',
-                    'url' => 'admin/ekip-ekle',
+                    'url' => 'admin/ekip/create',
                 ],
                 [
                     'text' => 'Ekip Listesi',
-                    'url' => 'admin/ekip-liste',
+                    'url' => 'admin/ekip',
                 ],
             ],
         ],

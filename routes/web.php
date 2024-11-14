@@ -85,15 +85,13 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/referans-ekle', [ReferansController::class, 'create'])->name('referans-ekle');
 // Route::get('admin/referans-duzenle', [ReferansController::class, 'update'])->name('referans-duzenle');
 
-
-
 // Route::get('admin/katalog-liste', [KatalogController::class, 'index'])->name('katalog-liste');
 // Route::get('admin/katalog-ekle', [KatalogController::class, 'create'])->name('katalog-ekle');
 // Route::get('admin/katalog-duzenle', [KatalogController::class, 'update'])->name('katalog-duzenle');
 
-Route::get('admin/ekip-liste', [EkipController::class, 'index'])->name('ekip-liste');
-Route::get('admin/ekip-ekle', [EkipController::class, 'create'])->name('ekip-ekle');
-Route::get('admin/ekip-duzenle', [EkipController::class, 'update'])->name('ekip-duzenle');
+// Route::get('admin/ekip-liste', [EkipController::class, 'index'])->name('ekip-liste');
+// Route::get('admin/ekip-ekle', [EkipController::class, 'create'])->name('ekip-ekle');
+// Route::get('admin/ekip-duzenle', [EkipController::class, 'update'])->name('ekip-duzenle');
 
 Route::get('admin/sube-liste', [SubeController::class, 'index'])->name('sube-liste');
 Route::get('admin/sube-ekle', [SubeController::class, 'create'])->name('sube-ekle');
@@ -139,9 +137,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('proje', ProjeController::class);
     Route::resource('sayfa', SayfaController::class);
     Route::resource('hizmet', HizmetController::class);
-    Route::resource('soru',SoruController::class);
+    Route::resource('soru', SoruController::class);
     Route::resource('referans', ReferansController::class);
-    Route::resource('katalog',KatalogController::class);
+    Route::resource('katalog', KatalogController::class);
+    Route::resource('ekip', EkipController::class);
 });
 
 

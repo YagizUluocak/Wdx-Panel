@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 @section('plugins.BootstrapSwitch', true)
+@section('plugins.Datatables', true)
 
 @section('title', 'Ekip Listesi')
 
@@ -15,14 +16,6 @@ $heads = [
     ['label' => 'İşlemler', 'width' => 15],
 ];
 
-$btnEdit = '<a href="' . url('/admin/ekip-duzenle') . '" class="btn btn-warning mx-1 shadow btn-sm" title="Edit" >
-    <i class="fa fa-lg fa-fw fa-pen"></i>
-    </a>';
-
-$btnDelete = '<button class="btn btn-danger mx-1 shadow btn-sm" title="Delete">
-        <i class="fa fa-ls fa-fw fa-trash" igroup-size="sm"></i>
-    </button>';
-
 @endphp
 
 @section('content')
@@ -32,16 +25,30 @@ $btnDelete = '<button class="btn btn-danger mx-1 shadow btn-sm" title="Delete">
             <div class="row">
                 <div class="col-12">
                     <x-adminlte-datatable class="text-center" :heads="$heads" id="tableekipliste" striped hoverable bordered compressed centered>
-                        <tr>
-                            <td>1</td>
-                            <td>Standart Paket</td>
-                            <td style="color: rgb(49, 160, 49)">Aktif</td>
-                            </td>
-                            <td>
-                                @php echo $btnEdit @endphp
-                                @php echo $btnDelete @endphp
-                            </td>
-                        </tr>
+
+                        @if($ekipler->isempty())
+                            <tr>
+                                <td colspan="4" class="text-center bg-warning">Herhangi Bir Kayıt Bulunamadı.</td>
+                            </tr>
+                        @else
+                            @foreach($ekipler as $ekip)
+                                <td>{{ $ekip->id }}</td>
+                                <td>{{ $ekip->adsoyad }}</td>
+                                <td style="color:{{ $ekip->durum ? 'rgb(49, 160, 49)' : 'rgb(160, 49, 49)' }}"> {{ $ekip->durum ? 'Aktif' : 'Pasif' }}</td>
+                                <td>
+                                    <a href="{{ route('admin.ekip.edit', $ekip->id) }}" class="btn btn-warning mx-1 shadow btn-sm">Düzenle</a>
+                                    <button class="btn btn-danger mx-1 shadow btn-sm" title="Delete" onclick="event.preventDefault(); if(confirm('Bu ekip üyesini silmek istediğinizden emin misiniz?')) { document.getElementById('delete-form-{{ $ekip->id }}').submit(); }">
+                                        <i class="fa fa-lg fa-fw fa-trash"></i>
+                                    </button>
+                                    <form id="delete-form-{{ $ekip->id }}" action="{{ route('admin.ekip.destroy', $ekip->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            @endforeach
+
+                        @endif
+
                     </x-adminlte-datatable>
                 </div>
             </div>
