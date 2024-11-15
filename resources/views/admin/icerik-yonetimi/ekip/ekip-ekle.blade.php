@@ -27,6 +27,7 @@
                     {{ session('success') }}
                 </div>
             @endif
+            
             <form  id="ekipForm" method="POST" action="{{ route('admin.ekip.store') }}" enctype="multipart/form-data">
                 @csrf
 

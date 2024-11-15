@@ -613,11 +613,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Şube Ekle',
-                    'url' => 'admin/sube-ekle',
+                    'url' => 'admin/sube/create',
                 ],
                 [
                     'text' => 'Şube Listesi',
-                    'url' => 'admin/sube-liste',
+                    'url' => 'admin/sube',
                 ],
             ],
         ],

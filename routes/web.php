@@ -85,6 +85,11 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/referans-ekle', [ReferansController::class, 'create'])->name('referans-ekle');
 // Route::get('admin/referans-duzenle', [ReferansController::class, 'update'])->name('referans-duzenle');
 
+//Route::post('belge-ekle', [BelgeController::class, 'store'])->name('belge.store');
+//Route::get('admin/belge-ekle', [BelgeController::class, 'create'])->name('belge-ekle');
+//Route::get('admin/belge-liste', [BelgeController::class, 'index'])->name('belge-liste');
+//Route::get('admin/belge-duzenle/{id}', [BelgeController::class, 'update'])->name('belge-duzenle');
+
 // Route::get('admin/katalog-liste', [KatalogController::class, 'index'])->name('katalog-liste');
 // Route::get('admin/katalog-ekle', [KatalogController::class, 'create'])->name('katalog-ekle');
 // Route::get('admin/katalog-duzenle', [KatalogController::class, 'update'])->name('katalog-duzenle');
@@ -93,9 +98,9 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/ekip-ekle', [EkipController::class, 'create'])->name('ekip-ekle');
 // Route::get('admin/ekip-duzenle', [EkipController::class, 'update'])->name('ekip-duzenle');
 
-Route::get('admin/sube-liste', [SubeController::class, 'index'])->name('sube-liste');
-Route::get('admin/sube-ekle', [SubeController::class, 'create'])->name('sube-ekle');
-Route::get('admin/sube-duzenle', [SubeController::class, 'update'])->name('sube-duzenle');
+// Route::get('admin/sube-liste', [SubeController::class, 'index'])->name('sube-liste');
+// Route::get('admin/sube-ekle', [SubeController::class, 'create'])->name('sube-ekle');
+// Route::get('admin/sube-duzenle', [SubeController::class, 'update'])->name('sube-duzenle');
 
 Route::get('admin/blog-liste', [BlogController::class, 'index'])->name('blog-liste');
 Route::get('admin/blog-ekle', [BlogController::class, 'create'])->name('blog-ekle');
@@ -120,12 +125,7 @@ Route::get('admin/yonetici-duzenle', [YoneticiController::class, 'update'])->nam
 
 
 
-//Route::post('belge-ekle', [BelgeController::class, 'store'])->name('belge.store');
-//Route::get('admin/belge-ekle', [BelgeController::class, 'create'])->name('belge-ekle');
 
-
-//Route::get('admin/belge-liste', [BelgeController::class, 'index'])->name('belge-liste');
-//Route::get('admin/belge-duzenle/{id}', [BelgeController::class, 'update'])->name('belge-duzenle');
 
 
 
@@ -141,6 +141,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('referans', ReferansController::class);
     Route::resource('katalog', KatalogController::class);
     Route::resource('ekip', EkipController::class);
+    Route::resource('sube', SubeController::class);
 });
 
 
