@@ -154,7 +154,7 @@
             if (document.getElementById('success-alert')) {
                 setTimeout(function() {
                     // 1 saniye sonra yönlendir
-                    window.location.href = "{{ route('admin.ekip.index') }}";
+                    window.location.href = "{{ route('admin.blog.index') }}";
                 }, 1200);
             }
         };

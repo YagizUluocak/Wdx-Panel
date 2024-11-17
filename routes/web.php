@@ -102,9 +102,9 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/sube-ekle', [SubeController::class, 'create'])->name('sube-ekle');
 // Route::get('admin/sube-duzenle', [SubeController::class, 'update'])->name('sube-duzenle');
 
-Route::get('admin/blog-liste', [BlogController::class, 'index'])->name('blog-liste');
-Route::get('admin/blog-ekle', [BlogController::class, 'create'])->name('blog-ekle');
-Route::get('admin/blog-duzenle', [BlogController::class, 'update'])->name('blog-duzenle');
+// Route::get('admin/blog-liste', [BlogController::class, 'index'])->name('blog-liste');
+// Route::get('admin/blog-ekle', [BlogController::class, 'create'])->name('blog-ekle');
+// Route::get('admin/blog-duzenle', [BlogController::class, 'update'])->name('blog-duzenle');
 
 Route::get('admin/slider-liste', [SliderController::class, 'index'])->name('slider-liste');
 Route::get('admin/slider-ekle', [SliderController::class, 'create'])->name('slider-ekle');

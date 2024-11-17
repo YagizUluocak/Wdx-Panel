@@ -28,7 +28,7 @@
                 </div>
             @endif
 
-            <form id="blogForm" method="POST" action="{{ route('admin.blog.store') }}" enctype="multipart/form-data">
+            <form id="blogForm" method="POST" action="{{ route('admin.blog.update', $blog->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -120,7 +120,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
 <script>
     $('#summernote').summernote({
-      placeholder: 'Hizmet içeriğini Giriniz.',
+      placeholder: 'Blog içeriğini Giriniz.',
       tabsize: 2,
       height: 120,
       toolbar: [
@@ -160,7 +160,7 @@
             if (document.getElementById('success-alert')) {
                 setTimeout(function() {
                     // 1 saniye sonra yönlendir
-                    window.location.href = "{{ route('admin.ekip.index') }}";
+                    window.location.href = "{{ route('admin.blog.index') }}";
                 }, 1200);
             }
         };

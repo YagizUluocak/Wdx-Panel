@@ -32,6 +32,8 @@ $heads = [
                             </tr>
                         @else
                             @foreach($bloglar as $blog)
+                            <tr>
+
                                 <td>{{ $blog->id }}</td>
                                 <td><img src="{{ asset('storage/blog/'.$blog->resim) }}" class="img-fluid" style="width: 150px; height:100px;"></td>
                                 <td>{{ $blog->baslik }}</td>
@@ -46,6 +48,7 @@ $heads = [
                                         @method('DELETE')
                                     </form>
                                 </td>
+                            </tr>
                             @endforeach
 
                         @endif
