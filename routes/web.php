@@ -142,6 +142,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('katalog', KatalogController::class);
     Route::resource('ekip', EkipController::class);
     Route::resource('sube', SubeController::class);
+    Route::resource('blog', BlogController::class);
 });
 
 

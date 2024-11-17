@@ -632,11 +632,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Blog Ekle',
-                    'url' => 'admin/blog-ekle',
+                    'url' => 'admin/blog/create',
                 ],
                 [
                     'text' => 'Blog Listesi',
-                    'url' => 'admin/blog-liste',
+                    'url' => 'admin/blog',
                 ],
             ],
         ],
