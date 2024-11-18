@@ -29,9 +29,10 @@
             @endif
 
 
-            <form id="sliderForm" method="POST" action="{{ route('admin.slider.store') }}" enctype="multipart/form-data">
+            <form id="sliderForm" method="POST" action="{{ route('admin.slider.update', $slider->id) }}" enctype="multipart/form-data">
                 @csrf
-
+                @method('PUT')
+                
                 <div class="row">
                     <div class="col-12">
                         <x-adminlte-input name="baslik" label="Slider Başlık" placeholder="Slider Başlığı Giriniz." value="{{ old('baslik', $slider->baslik) }}" />
@@ -112,7 +113,7 @@
     <script>
 
             
-        document.getElementById('blogForm').addEventListener('submit', function(e) {
+        document.getElementById('sliderForm').addEventListener('submit', function(e) {
             // Switch input kontrolü
             let switchInput = document.getElementById('durumSwitch');
             let durumInput = document.getElementById('durum');
@@ -126,7 +127,7 @@
             if (document.getElementById('success-alert')) {
                 setTimeout(function() {
                     // 1 saniye sonra yönlendir
-                    window.location.href = "{{ route('admin.ekip.index') }}";
+                    window.location.href = "{{ route('admin.slider.index') }}";
                 }, 1200);
             }
         };

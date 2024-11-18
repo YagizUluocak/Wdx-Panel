@@ -650,11 +650,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Slider Ekle',
-                    'url' => 'admin/slider-ekle',
+                    'url' => 'admin/slider/create',
                 ],
                 [
                     'text' => 'Slider Listesi',
-                    'url' => 'admin/slider-liste',
+                    'url' => 'admin/slider',
                 ],
             ],
         ],

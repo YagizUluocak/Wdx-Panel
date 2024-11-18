@@ -97,5 +97,34 @@
 
 @section('js')
 
+<!-- Switch -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap3/bootstrap-switch.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("input[name='durumSwitch']").bootstrapSwitch();
+        });
+    </script>
+    <script>
 
+            
+        document.getElementById('sliderForm').addEventListener('submit', function(e) {
+            // Switch input kontrolü
+            let switchInput = document.getElementById('durumSwitch');
+            let durumInput = document.getElementById('durum');
+            
+            // Switch açık (on) ise durum değerini 1 yap, değilse 0 yap
+            durumInput.value = switchInput.checked ? 1 : 0;
+        });
+
+            // Eğer başarı mesajı varsa, yönlendirme işlemini yap
+            window.onload = function() {
+            if (document.getElementById('success-alert')) {
+                setTimeout(function() {
+                    // 1 saniye sonra yönlendir
+                    window.location.href = "{{ route('admin.slider.index') }}";
+                }, 1200);
+            }
+        };
+</script>
+<!-- Switch Son -->
 @stop

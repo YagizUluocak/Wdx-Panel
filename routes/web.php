@@ -51,10 +51,6 @@ Route::get('admin/sms-ayar', [App\Http\Controllers\SmsAyarController::class, 'in
 Route::get('admin/arkaplan-gorselleri', [App\Http\Controllers\ArkaPlanController::class, 'index'])->name('arkaplan-gorselleri');
 
 
-Route::get('admin/dil-ekle', [App\Http\Controllers\yeniDilEkleController::class, 'index'])->name('dil-ekle');
-Route::get('admin/dil-liste', [App\Http\Controllers\dilListeController::class, 'index'])->name('dil-liste');
-Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::class, 'index'])->name('dil-duzenle');
-
 // Route::get('admin/urun/kategori-liste', [KategoriController::class, 'index'])->name('kategori-listele');
 // Route::get('admin/urun/kategori-ekle', [KategoriController::class, 'create'])->name('kategori-ekle');
 // Route::get('admin/kategori-duzenle', [KategoriController::class,'update'])->name('kategori-duzenle');
@@ -106,9 +102,9 @@ Route::get('admin/dil-duzenle', [App\Http\Controllers\DilDuzenleController::clas
 // Route::get('admin/blog-ekle', [BlogController::class, 'create'])->name('blog-ekle');
 // Route::get('admin/blog-duzenle', [BlogController::class, 'update'])->name('blog-duzenle');
 
-Route::get('admin/slider-liste', [SliderController::class, 'index'])->name('slider-liste');
-Route::get('admin/slider-ekle', [SliderController::class, 'create'])->name('slider-ekle');
-Route::get('admin/slider-duzenle', [SliderController::class, 'update'])->name('slider-duzenle');
+// Route::get('admin/slider-liste', [SliderController::class, 'index'])->name('slider-liste');
+// Route::get('admin/slider-ekle', [SliderController::class, 'create'])->name('slider-ekle');
+// Route::get('admin/slider-duzenle', [SliderController::class, 'update'])->name('slider-duzenle');
 
 Route::get('admin/galeri-liste', [FotoGaleriController::class, 'index'])->name('galeri-liste');
 Route::get('admin/galeri-ekle', [FotoGaleriController::class, 'create'])->name('galeri-ekle');
@@ -143,6 +139,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('ekip', EkipController::class);
     Route::resource('sube', SubeController::class);
     Route::resource('blog', BlogController::class);
+    Route::resource('slider', SliderController::class);
 });
 
 
