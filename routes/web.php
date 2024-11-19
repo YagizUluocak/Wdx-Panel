@@ -106,9 +106,9 @@ Route::get('admin/arkaplan-gorselleri', [App\Http\Controllers\ArkaPlanController
 // Route::get('admin/slider-ekle', [SliderController::class, 'create'])->name('slider-ekle');
 // Route::get('admin/slider-duzenle', [SliderController::class, 'update'])->name('slider-duzenle');
 
-Route::get('admin/galeri-liste', [FotoGaleriController::class, 'index'])->name('galeri-liste');
-Route::get('admin/galeri-ekle', [FotoGaleriController::class, 'create'])->name('galeri-ekle');
-Route::get('admin/galeri-duzenle', [FotoGaleriController::class, 'update'])->name('galeri-duzenle');
+// Route::get('admin/galeri-liste', [FotoGaleriController::class, 'index'])->name('galeri-liste');
+// Route::get('admin/galeri-ekle', [FotoGaleriController::class, 'create'])->name('galeri-ekle');
+// Route::get('admin/galeri-duzenle', [FotoGaleriController::class, 'update'])->name('galeri-duzenle');
 
 Route::get('admin/video-liste', [VideoGaleriController::class, 'index'])->name('video-liste');
 Route::get('admin/video-ekle', [VideoGaleriController::class, 'create'])->name('video-ekle');
@@ -140,6 +140,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('sube', SubeController::class);
     Route::resource('blog', BlogController::class);
     Route::resource('slider', SliderController::class);
+    Route::resource('foto-galeri', FotoGaleriController::class);
 });
 
 

@@ -74,7 +74,7 @@
                         {{ $slider->durum == 1 ? 'checked' : '' }}
                         />
 
-                        <input type="hidden" name="durum" id="durum" value="{{ old('slider', $slider->durum) }}">
+                        <input type="hidden" name="durum" id="durum" value="{{ old('durum', $slider->durum) }}">
                     </div>
                 </div>
     

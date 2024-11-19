@@ -669,11 +669,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'Yeni Galeri Ekle',
-                    'url' => 'admin/galeri-ekle',
+                    'url' => 'admin/foto-galeri/create',
                 ],
                 [
                     'text' => 'Galeri Listesi',
-                    'url' => 'admin/galeri-liste',
+                    'url' => 'admin/foto-galeri',
                 ],
             ],
         ],

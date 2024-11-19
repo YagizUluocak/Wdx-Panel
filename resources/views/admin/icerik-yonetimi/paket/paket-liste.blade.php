@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 @section('plugins.BootstrapSwitch', true)
 @section('plugins.Datatables', true)
+
 @section('title', 'Paket Listesi')
 
 @section('content_header')
