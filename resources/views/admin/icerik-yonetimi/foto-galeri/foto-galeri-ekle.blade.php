@@ -41,8 +41,8 @@
                 <div class="row">
                     <div class="col-12 mt-4">
                         <x-adminlte-card title="Ürün Görselleri" theme="secondary" icon="fas fa-camera">
-                            <label for="resim">Görsel Seçiniz</label>
-                            <x-adminlte-input id="resim" name="resim[]" type="file" multiple />    
+                            <label for="resimler">Görsel Seçiniz</label>
+                            <x-adminlte-input id="resimler" name="resimler[]" type="file" multiple />    
                         </x-adminlte-card>
                     </div>
                 </div>

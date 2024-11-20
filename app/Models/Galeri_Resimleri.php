@@ -11,7 +11,7 @@ class Galeri_Resimleri extends Model
 
     protected $table = 'galeri_resimleris';
 
-    protected $fillabele = [
+    protected $fillable = [
         'galeri_id',
         'resim_adi',
     ];
