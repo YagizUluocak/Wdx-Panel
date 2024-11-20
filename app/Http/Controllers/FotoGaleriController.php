@@ -2,22 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FotoGaleri;
+use App\Models\Galeri_Resimleri;
 use Illuminate\Http\Request;
 
 class FotoGaleriController extends Controller
 {
     public function index()
     {
-        return view('admin/icerik-yonetimi/foto-galeri/foto-galeri-liste');
+        $fotoGaleri = FotoGaleri::all();
+        $galeriResimler = Galeri_Resimleri::where('galeri_id', $fotoGaleri->id)->get();
+        return view('admin.icerik-yonetimi.foto-galeri.foto-galeri-liste', compact('fotoGaleri', 'galeriResimler'));
     }
 
     public function create()
     {
-        return view('admin/icerik-yonetimi/foto-galeri/foto-galeri-ekle');
+        return view('admin.icerik-yonetimi.foto-galeri.foto-galeri-ekle');
     }
 
-    public function update()
+    public function edit($id)
     {
-        return view('admin/icerik-yonetimi/foto-galeri/foto-galeri-duzenle');
+        $fotoGaleri = FotoGaleri::findOrFail($id);
+        $galeriResimler = Galeri_Resimleri::where('galeri_id', $fotoGaleri->id)->get();
+
+        return view('admin.icerik-yonetimi.foto-galeri.foto-galeri-duzenle', compact('fotoGaleri', 'galeriResimler'));
     }
+
+    
 }

@@ -39,15 +39,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-12">
-                        <label for="resim">Galeri Görseli</label>
-                        <x-adminlte-input-file name="resim"  placeholder="Fotoğraf Seçiniz.">
-                            <x-slot name="prependedSlot">
-                                <div class="input-group-text bg-lightblue">
-                                    <i class="fas fa-upload"></i>
-                                </div>
-                            </x-slot>
-                        </x-adminlte-input-file>
+                    <div class="col-12 mt-4">
+                        <x-adminlte-card title="Ürün Görselleri" theme="secondary" icon="fas fa-camera">
+                            <label for="resim">Görsel Seçiniz</label>
+                            <x-adminlte-input id="resim" name="resim[]" type="file" multiple />    
+                        </x-adminlte-card>
                     </div>
                 </div>
 
@@ -87,7 +83,19 @@
 @stop
 
 @section('js')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.5/js/fileinput.min.js"></script>
+<script>
+    $("#resim").fileinput({
+        showUpload: false,
+        previewFileType: 'any',
+        theme: "fa",
+        allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg', 'webp'],
+        maxFileCount: 10,
+        browseOnZoneClick: true,
+        layoutTemplates: { main1: "{preview}\n<div class='input-group w-100'>{remove}\n{cancel}\n{upload}\n{browse}</div>" }
+        
+    });
+</script>
 <!-- Switch -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap3/bootstrap-switch.min.js"></script>
     <script>
